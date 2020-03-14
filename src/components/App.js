@@ -8,7 +8,6 @@ class App extends Component {
   render() {
     return (
         <>
-
           <Router basename={'/invoice-app/'}>
             <Route exact path="/home" component={Home}/>
             <Route exact path="/customers" component={Customers}/>
