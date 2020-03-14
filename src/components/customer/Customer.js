@@ -21,14 +21,14 @@ const TableHeader = () => {
 const TableBody = props => {
     const rows = props.customerData.map((row, index) => {
         return (
-            <tr key = {index}>
+            <tr key={index}>
                 <td>{row.id}</td>
                 <td>{row.name}</td>
                 <td>{row.address}</td>
                 <td>{row.code}</td>
                 <td>{row.legalEntity}</td>
                 <td>
-                    <Button onClick = { () =>
+                    <Button onClick={() =>
                         props.removeCustomer(index)
                     }>Delete</Button>
                 </td>
@@ -47,8 +47,8 @@ class Customer extends Component {
 
         return (
             <Table striped bordered hover>
-                <TableHeader />
-                <TableBody customerData = {customerData} removeCustomer = {removeCustomer}/>
+                <TableHeader/>
+                <TableBody customerData={customerData} removeCustomer={removeCustomer}/>
             </Table>
         )
     }

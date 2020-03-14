@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Customer from  '../../components/customer/Customer.js';
+import Customer from '../../components/customer/Customer.js';
 import '../../styles/App.css';
 
 class Customers extends Component {
@@ -23,7 +23,7 @@ class Customers extends Component {
     };
 
     removeCustomer = index => {
-        const { customerData} = this.state;
+        const {customerData} = this.state;
 
         this.setState({
             customerData: customerData.filter((customer, i) => {
@@ -36,7 +36,7 @@ class Customers extends Component {
         return (
             <div>
                 <div className="container">
-                    <Customer customerData = {this.state.customerData} removeCustomer = {this.removeCustomer} />
+                    <Customer customerData={this.state.customerData} removeCustomer={this.removeCustomer}/>
                 </div>
             </div>
         )
