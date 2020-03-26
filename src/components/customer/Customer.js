@@ -3,7 +3,6 @@ import '../../styles/App.css';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 
-
 const TableHeader = () => {
     return (
         <thead>
@@ -19,7 +18,7 @@ const TableHeader = () => {
 };
 
 const TableBody = props => {
-    const rows = props.customerData.map((row, index) => {
+    const rows = props.customerData && props.customerData.map((row, index) => {
         return (
             <tr key={index}>
                 <td>{row.id}</td>
@@ -39,16 +38,30 @@ const TableBody = props => {
 };
 
 class Customer extends Component {
+    state = {
+        customerData: []
+    };
 
+    componentDidMount() {
+        const url = 'http://localhost:8080/customers';
+
+        console.log("Fetching " + url);
+        fetch(url)
+            .then(result => result.json())
+            .then(json => {
+                this.setState({
+                    customerData: json,
+                })
+            })
+    }
 
     render() {
-        const {customerData, removeCustomer} = this.props;
-        console.log(customerData);
+        const {removeCustomer} = this.props;
 
         return (
             <Table striped bordered hover>
                 <TableHeader/>
-                <TableBody customerData={customerData} removeCustomer={removeCustomer}/>
+                <TableBody customerData={this.state.customerData} removeCustomer={removeCustomer}/>
             </Table>
         )
     }
