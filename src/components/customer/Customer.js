@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../../styles/App.css';
 import Button from 'react-bootstrap/Button';
+import { withRouter } from "react-router-dom";
 
 const TableHeader = () => {
     return (
@@ -16,19 +17,26 @@ const TableHeader = () => {
     )
 };
 
+const InvoiceButton = withRouter(({ history, customerId }) => (
+    <Button
+        onClick={() => { history.push('invoices/' + customerId) }}
+    >
+        Display Invoices
+    </Button>
+));
+
+
 const TableBody = props => {
     const rows = props.customerData && props.customerData.map((row, index) => {
         return (
-            <tr onClick={props.handleClick}  key={index}>
+            <tr key={index} >
                 <td>{row.id}</td>
                 <td>{row.name}</td>
                 <td>{row.address}</td>
                 <td>{row.code}</td>
                 <td>{row.legalEntity}</td>
                 <td>
-                    <Button onClick={() =>
-                        props.displayInvoices(index)
-                    }>Display Invoices</Button>
+                    <InvoiceButton customerId={row.id}/>
                 </td>
                 <td>
                     <Button onClick={() =>
