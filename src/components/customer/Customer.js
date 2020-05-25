@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import '../../styles/App.css';
 import Button from 'react-bootstrap/Button';
-import Table from 'react-bootstrap/Table';
 
 const TableHeader = () => {
     return (
@@ -20,12 +19,17 @@ const TableHeader = () => {
 const TableBody = props => {
     const rows = props.customerData && props.customerData.map((row, index) => {
         return (
-            <tr key={index}>
+            <tr onClick={props.handleClick}  key={index}>
                 <td>{row.id}</td>
                 <td>{row.name}</td>
                 <td>{row.address}</td>
                 <td>{row.code}</td>
                 <td>{row.legalEntity}</td>
+                <td>
+                    <Button onClick={() =>
+                        props.displayInvoices(index)
+                    }>Display Invoices</Button>
+                </td>
                 <td>
                     <Button onClick={() =>
                         props.removeCustomer(index)
@@ -37,34 +41,4 @@ const TableBody = props => {
     return <tbody>{rows}</tbody>
 };
 
-class Customer extends Component {
-    state = {
-        customerData: []
-    };
-
-    componentDidMount() {
-        const url = 'http://localhost:8080/customers';
-
-        console.log("Fetching " + url);
-        fetch(url)
-            .then(result => result.json())
-            .then(json => {
-                this.setState({
-                    customerData: json,
-                })
-            })
-    }
-
-    render() {
-        const {removeCustomer} = this.props;
-
-        return (
-            <Table striped bordered hover>
-                <TableHeader/>
-                <TableBody customerData={this.state.customerData} removeCustomer={removeCustomer}/>
-            </Table>
-        )
-    }
-}
-
-export default Customer;
+export {TableHeader, TableBody};

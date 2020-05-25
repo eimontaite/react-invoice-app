@@ -1,25 +1,37 @@
 import React, {Component} from 'react';
-import Customer from '../../components/customer/Customer.js';
 import '../../styles/App.css';
+import Table from 'react-bootstrap/Table';
+import {TableHeader, TableBody} from '../../components/customer/Customer.js';
 
 class Customers extends Component {
-    state = {
-        customerData: [
-            {
-                id: 1,
-                name: 'Imone',
-                address: 'Miestelis',
-                code: '2e',
-                legalEntity: 'true'
-            },
-            {
-                id: 13874,
-                name: 'Zmogus',
-                address: 'Miestas',
-                code: 'sdf4rt4',
-                legalEntity: 'false'
-            },
-        ]
+    constructor(props) {
+        super(props);
+        this.state = {
+            customerData: []
+        };
+    }
+
+    componentDidMount() {
+        const url = 'http://localhost:8080/customers';
+
+        console.log("Fetching " + url);
+        fetch(url)
+            .then(result => result.json())
+            .then(json => {
+                this.setState({
+                    customerData: json,
+                })
+            });
+
+        console.log(this.state.customerData)
+    }
+
+    displayInvoices = index => {
+        const {customerData} = this.state;
+        console.log(customerData);
+        console.log(customerData.filter((customer, i) => {
+            return i;
+        }));
     };
 
     removeCustomer = index => {
@@ -36,7 +48,12 @@ class Customers extends Component {
         return (
             <div>
                 <div className="container">
-                    <Customer customerData={this.state.customerData} removeCustomer={this.removeCustomer}/>
+                    <Table striped bordered hover>
+                        <TableHeader/>
+                        <TableBody customerData={this.state.customerData}
+                                   displayInvoices={this.displayInvoices}
+                                   removeCustomer={this.removeCustomer}/>
+                    </Table>
                 </div>
             </div>
         )
