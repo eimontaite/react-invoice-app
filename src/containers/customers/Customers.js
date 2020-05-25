@@ -26,14 +26,6 @@ class Customers extends Component {
         console.log(this.state.customerData)
     }
 
-    displayInvoices = index => {
-        const {customerData} = this.state;
-        console.log(customerData);
-        console.log(customerData.filter((customer, i) => {
-            return i;
-        }));
-    };
-
     removeCustomer = index => {
         const {customerData} = this.state;
 
@@ -51,7 +43,6 @@ class Customers extends Component {
                     <Table striped bordered hover>
                         <TableHeader/>
                         <TableBody customerData={this.state.customerData}
-                                   displayInvoices={this.displayInvoices}
                                    removeCustomer={this.removeCustomer}/>
                     </Table>
                 </div>

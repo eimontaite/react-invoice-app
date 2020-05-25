@@ -3,6 +3,7 @@ import {Route, Switch, Link} from 'react-router-dom';
 import {Navbar, NavItem, Nav} from 'react-bootstrap';
 import Home from '../home/Home';
 import Customers from '../../containers/customers/Customers';
+import Invoices from '../../containers/invoices/Invoices';
 
 class Header extends Component {
     render() {
@@ -27,6 +28,7 @@ class Header extends Component {
                     <Switch>
                         <Route exact path='/' component={Home}/>
                         <Route exact path="/customers" component={Customers}/>
+                        <Route exact path="/invoices/:customerId" component={Invoices} />
                         <Route render={function () {
                             return <p>Not found</p>
                         }}/>
