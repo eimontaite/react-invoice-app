@@ -16,7 +16,7 @@ const TableHeader = () => {
 const TableBody = props => {
     const rows = props.invoiceData && props.invoiceData.map((row, index) => {
         return (
-            <tr onClick={props.handleClick}  key={index}>
+            <tr key={index}>
                 <td>{row.id}</td>
                 <td>{row.dateTime}</td>
                 <td>
