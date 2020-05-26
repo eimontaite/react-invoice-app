@@ -13,16 +13,21 @@ class Invoices extends Component {
     }
 
     componentDidMount() {
-        const url = 'http://localhost:8080/invoices/';
-
-        fetch(url + this.props.match.params.customerId)
-            .then(result => result.json())
-            .then(json => {
-                this.setState({
-                    invoiceData: json,
-                })
-            });
-        console.log(this.state.invoiceData);
+        let url;
+        console.log("id", this.props.match.params.customerId)
+        if (this.props.match.params.customerId !== undefined) {
+            url = 'http://localhost:8080/invoices/' + this.props.match.params.customerId;
+        } else {
+            url = 'http://localhost:8080/invoices'
+        }
+            fetch(url)
+                .then(result => result.json())
+                .then(json => {
+                    this.setState({
+                        invoiceData: json,
+                    })
+                });
+            console.log(this.state.invoiceData);
     }
 
     render() {

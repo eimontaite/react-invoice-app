@@ -20,6 +20,9 @@ class Header extends Component {
                                 <NavItem eventkey={2} href="/customers">
                                     <Nav.Link as={Link} to="/customers">Customers</Nav.Link>
                                 </NavItem>
+                                <NavItem eventkey={3} href="/invoices">
+                                    <Nav.Link as={Link} to="/invoices">All Invoices</Nav.Link>
+                                </NavItem>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
@@ -28,6 +31,7 @@ class Header extends Component {
                     <Switch>
                         <Route exact path='/' component={Home}/>
                         <Route exact path="/customers" component={Customers}/>
+                        <Route exact path="/invoices" component={Invoices} />
                         <Route exact path="/invoices/:customerId" component={Invoices} />
                         <Route render={function () {
                             return <p>Not found</p>
