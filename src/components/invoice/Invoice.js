@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import '../../styles/App.css';
 import {Button, ButtonGroup, Collapse, Card} from 'react-bootstrap';
+import Moment from 'react-moment';
 
 const InvoiceCard = props => {
     const [open, setOpen] = useState(false);
@@ -9,7 +10,11 @@ const InvoiceCard = props => {
         return (
             <Card>
                 <Card.Body>
-                    <Card.Title>{row.dateTime}</Card.Title>
+                    <Card.Title>
+                        <Moment format="YYYY-MM-DD HH:mm">
+                            {row.dateTime}
+                        </Moment>
+                    </Card.Title>
                     <Card.Text>
                         <p>Item Name: {order.itemName}</p>
                         <p>Order Type: {order.typeId}</p>
