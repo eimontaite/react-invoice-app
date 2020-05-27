@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import '../../styles/App.css';
 import Table from 'react-bootstrap/Table';
-import {TableHeader, TableBody} from '../../components/invoice/Invoice.js';
+import {InvoiceCard} from '../../components/invoice/Invoice.js';
 
 class Invoices extends Component {
     constructor(props) {
@@ -27,7 +27,6 @@ class Invoices extends Component {
                         invoiceData: json,
                     })
                 });
-            console.log(this.state.invoiceData);
     }
 
     render() {
@@ -35,8 +34,7 @@ class Invoices extends Component {
             <div>
                 <div className="container">
                     <Table striped bordered hover>
-                        <TableHeader/>
-                        <TableBody invoiceData={this.state.invoiceData}/>
+                        <InvoiceCard invoiceData={this.state.invoiceData}/>
                     </Table>
                 </div>
             </div>
