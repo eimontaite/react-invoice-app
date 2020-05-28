@@ -6,7 +6,6 @@ import Moment from "react-moment";
 const UserInfoCard = props => {
     const [open, setOpen] = useState(false);
 
-    console.log(props.userInfo)
     const userInfoCards = props.userInfo && props.userInfo.map((card, index) => {
         return (
             <Card style={{ width: '50%' }} bg={"light"}>
