@@ -4,6 +4,7 @@ import {Navbar, NavItem, Nav} from 'react-bootstrap';
 import Home from '../home/Home';
 import Customers from '../../containers/customers/Customers';
 import Invoices from '../../containers/invoices/Invoices';
+import UserInfo from '../../containers/user-info/UserInfo';
 
 class Header extends Component {
     render() {
@@ -23,6 +24,9 @@ class Header extends Component {
                                 <NavItem eventkey={3} href="/invoices">
                                     <Nav.Link as={Link} to="/invoices">All Invoices</Nav.Link>
                                 </NavItem>
+                                <NavItem eventkey={4} href="/user-info/2">
+                                    <Nav.Link as={Link} to="/user-info/2">My Info</Nav.Link>
+                                </NavItem>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
@@ -33,6 +37,8 @@ class Header extends Component {
                         <Route exact path="/customers" component={Customers}/>
                         <Route exact path="/invoices" component={Invoices} />
                         <Route exact path="/invoices/:customerId" component={Invoices} />
+                        // todo use actual userId
+                        <Route exact path="/user-info/2" component={UserInfo} />
                         <Route render={function () {
                             return <p>Not found</p>
                         }}/>
