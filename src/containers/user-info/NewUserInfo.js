@@ -7,9 +7,8 @@ class NewUserInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            surname: '',
-        }
+            redirectToReferrer: false
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -28,15 +27,18 @@ class NewUserInfo extends React.Component {
             method: 'POST',
             headers: {
                 method: 'post',
-                headers: {
-                    'Accept': 'multipart/form-data, application/json, text/plain, */*',
-                    'Content-Type': 'multipart/form-data'
-                },
                 body: JSON.stringify({form: form})
             },
             body: form,
             mode: 'no-cors'
-        });
+        })
+            .then(json => {
+                this.setState({
+                    redirectToReferrer: true,
+                })
+            });
+        // todo use actual userId
+        this.props.history.push('/user-info/2')
     }
 
     render() {
@@ -53,12 +55,12 @@ class NewUserInfo extends React.Component {
 
                 <Form.Group controlId="formName">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control name="name" type="input" placeholder="Name"/>
+                    <Form.Control required name="name" type="input" placeholder="Name"/>
                 </Form.Group>
 
                 <Form.Group controlId="formSurname">
                     <Form.Label>Surname</Form.Label>
-                    <Form.Control name="surname" type="input" placeholder="Surname"/>
+                    <Form.Control required name="surname" type="input" placeholder="Surname"/>
                 </Form.Group>
 
                 <Form.Group controlId="formPersonalNumber">
@@ -68,12 +70,12 @@ class NewUserInfo extends React.Component {
 
                 <Form.Group controlId="formBusinessLicenceNo">
                     <Form.Label>Business Licence No.</Form.Label>
-                    <Form.Control name="businessLicenceNo" type="input" placeholder="Your business licence number"/>
+                    <Form.Control required name="businessLicenceNo" type="input" placeholder="Your business licence number"/>
                 </Form.Group>
 
                 <Form.Group controlId="formAddress">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control name="address" type="input" placeholder="Your address"/>
+                    <Form.Control required name="address" type="input" placeholder="Your address"/>
                 </Form.Group>
 
                 <Form.Group controlId="formEmail">
@@ -88,12 +90,12 @@ class NewUserInfo extends React.Component {
 
                 <Form.Group controlId="formBankAccountNo">
                     <Form.Label>Bank Account No.</Form.Label>
-                    <Form.Control name="bankAccount" type="input" placeholder="Your bank account number"/>
+                    <Form.Control required name="bankAccount" type="input" placeholder="Your bank account number"/>
                 </Form.Group>
 
                 <Form.Group controlId="formBank">
                     <Form.Label>Bank</Form.Label>
-                    <Form.Control name="bank" type="input" placeholder="Bank"/>
+                    <Form.Control required name="bank" type="input" placeholder="Bank"/>
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
