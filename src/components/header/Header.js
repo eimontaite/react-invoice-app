@@ -5,6 +5,7 @@ import Home from '../home/Home';
 import Customers from '../../containers/customers/Customers';
 import Invoices from '../../containers/invoices/Invoices';
 import UserInfo from '../../containers/user-info/UserInfo';
+import NewUserInfo from '../../containers/user-info/NewUserInfo';
 
 class Header extends Component {
     render() {
@@ -39,6 +40,8 @@ class Header extends Component {
                         <Route exact path="/invoices/:customerId" component={Invoices} />
                         // todo use actual userId
                         <Route exact path="/user-info/2" component={UserInfo} />
+                        // todo use actual userId
+                        <Route exact path="/user-info/new" component={NewUserInfo} />
                         <Route render={function () {
                             return <p>Not found</p>
                         }}/>

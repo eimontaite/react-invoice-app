@@ -4,6 +4,15 @@ import '../../styles/App.css';
 import {Button, Col, Container, Row} from 'react-bootstrap';
 import {UserInfoCard} from '../../components/user-info/UserInfoCard.js';
 
+// todo use userId
+const NewUserInfoButton = withRouter(({ history, customerId }) => (
+    <Button
+        onClick={() => { history.push('new') }}
+    >
+        Create New
+    </Button>
+));
+
 class UserInfo extends Component {
     constructor(props) {
         super(props);
@@ -29,9 +38,9 @@ class UserInfo extends Component {
             <Container>
                 <Row>
                     <Col>
-                        <Button variant={"success"}>
+                        <NewUserInfoButton userId={2} variant={"success"}>
                             Create New
-                        </Button>
+                        </NewUserInfoButton>
                     </Col>
                 </Row>
                 <br/>
