@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import '../../styles/App.css';
-import Table from 'react-bootstrap/Table';
+import {Button, Col, Container, Row} from 'react-bootstrap';
 import {UserInfoCard} from '../../components/user-info/UserInfoCard.js';
 
 class UserInfo extends Component {
@@ -26,13 +26,21 @@ class UserInfo extends Component {
 
     render() {
         return (
-            <div>
-                <div className="container">
-                    <Table striped bordered hover>
+            <Container>
+                <Row>
+                    <Col>
+                        <Button variant={"success"}>
+                            Create New
+                        </Button>
+                    </Col>
+                </Row>
+                <br/>
+                <Row>
+                    <Col>
                         <UserInfoCard userInfo={this.state.userInfo}/>
-                    </Table>
-                </div>
-            </div>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
