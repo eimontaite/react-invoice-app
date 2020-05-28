@@ -10,11 +10,9 @@ const UserInfoCard = props => {
         return (
             <Accordion>
                 <Card style={{ width: '50%' }} bg={"light"}>
-                    <Card.Header>
                         <Accordion.Toggle as={Card.Header} eventKey={index}>
                             {card.name} {card.surname}, address: {card.address}
                         </Accordion.Toggle>
-                    </Card.Header>
                     <Accordion.Collapse eventKey={index}>
                     <Card.Body>
                             <Card.Text>
