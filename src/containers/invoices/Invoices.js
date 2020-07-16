@@ -4,6 +4,8 @@ import '../../styles/App.css';
 import Table from 'react-bootstrap/Table';
 import {InvoiceCard} from '../../components/invoice/Invoice.js';
 
+import {Button, Col, Container, Row} from 'react-bootstrap';
+
 class Invoices extends Component {
     constructor(props) {
         super(props);
@@ -31,6 +33,13 @@ class Invoices extends Component {
 
     render() {
         return (
+            <Container>
+            <Row>
+                <Col>
+
+                </Col>
+            </Row>
+            <br/>
             <div>
                 <div className="container">
                     <Table striped bordered hover>
@@ -38,6 +47,7 @@ class Invoices extends Component {
                     </Table>
                 </div>
             </div>
+            </Container>
         )
     }
 }
