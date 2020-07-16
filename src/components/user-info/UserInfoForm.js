@@ -4,7 +4,7 @@ import {Button, Form} from "react-bootstrap";
 const UserInfoForm = props => {
 
     return (
-        <Form onSubmit={props.handleSubmit} onChange={props.myChangeHandler}>
+        <Form onSubmit={props.onSubmit} onChange={props.onChange}>
             {/*todo use actual userId*/}
             <Form.Group disabled controlId="formUserId">
                 <Form.Label>User ID</Form.Label>
