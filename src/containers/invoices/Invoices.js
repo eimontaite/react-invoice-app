@@ -8,7 +8,7 @@ import {Button, Col, Container, Row} from 'react-bootstrap';
 
 const NewInvoiceButton = withRouter(({ history }) => (
     <Button
-        onClick={() => { history.push('new') }}
+        onClick={() => { history.push('invoices/new') }}
     >
         Create New
     </Button>

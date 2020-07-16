@@ -1,6 +1,6 @@
 import React from "react";
 import {withRouter} from "react-router-dom";
-import InvoiceForm from '../../components/invoices/InvoiceForm.js';
+import InvoiceForm from '../../components/invoice/InvoiceForm';
 import {Container, Col, Row, Form, Button} from "react-bootstrap";
 
 class NewUserInfo extends React.Component {
