@@ -6,6 +6,14 @@ import {InvoiceCard} from '../../components/invoice/Invoice.js';
 
 import {Button, Col, Container, Row} from 'react-bootstrap';
 
+const NewInvoiceButton = withRouter(({ history }) => (
+    <Button
+        onClick={() => { history.push('new') }}
+    >
+        Create New
+    </Button>
+));
+
 class Invoices extends Component {
     constructor(props) {
         super(props);
@@ -36,7 +44,9 @@ class Invoices extends Component {
             <Container>
             <Row>
                 <Col>
-
+                <NewInvoiceButton variant={"success"}>
+                        Create New
+                    </NewInvoiceButton>
                 </Col>
             </Row>
             <br/>
