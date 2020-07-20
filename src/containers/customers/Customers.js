@@ -1,7 +1,18 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import '../../styles/App.css';
-import Table from 'react-bootstrap/Table';
+import {Button, Col, Container, Row, Table} from 'react-bootstrap';
 import {TableHeader, TableBody} from '../../components/customer/Customer.js';
+
+
+// todo use userId
+const NewCustomerButton = withRouter(({ history }) => (
+    <Button
+        onClick={() => { history.push('customers/new') }}
+    >
+        Create New Customer
+    </Button>
+));
 
 class Customers extends Component {
     constructor(props) {
@@ -38,15 +49,23 @@ class Customers extends Component {
 
     render() {
         return (
-            <div>
-                <div className="container">
-                    <Table striped bordered hover>
+            <Container>
+            <Row>
+                <Col>
+                    <NewCustomerButton userId={2} variant={"success"}>
+                        Create New
+                    </NewCustomerButton>
+                </Col>
+            </Row>
+            <br/>
+            <Row>
+            <Table striped bordered hover>
                         <TableHeader/>
                         <TableBody customerData={this.state.customerData}
                                    removeCustomer={this.removeCustomer}/>
                     </Table>
-                </div>
-            </div>
+            </Row>
+        </Container>
         )
     }
 }
