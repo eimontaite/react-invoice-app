@@ -24,7 +24,7 @@ class NewCustomerInfo extends React.Component {
         event.preventDefault();
         const form = new FormData(event.target);
         console.log("form", form);
-        fetch('http://localhost:8080/customer-info/new', {
+        fetch('http://localhost:8080/customers/new', {
             method: 'POST',
             headers: {
                 method: 'post',
@@ -39,7 +39,7 @@ class NewCustomerInfo extends React.Component {
                 })
             });
         // todo use actual userId
-        this.props.history.push('/customers/2')
+        this.props.history.push('/customers')
     }
 
     render() {
