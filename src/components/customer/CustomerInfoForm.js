@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Button, Form} from "react-bootstrap";
 
 const CustomerInfoForm = props => {
+    console.log("checked", props.checked)
     return (
         <Form onSubmit={props.onSubmit} onChange={props.onChange}>
             {/*todo use actual userId*/}
@@ -26,7 +27,7 @@ const CustomerInfoForm = props => {
             </Form.Group>
 
             <Form.Group controlId="formLegalEntity">
-                <Form.Check name="legalEntity" type="checkbox" label="Legal Entity?" />
+                <Form.Check name="legalEntity" type="checkbox" value={props.checked} onChange={props.onCheckboxChange} label="Legal Entity?" />
             </Form.Group>
 
             <Button variant="primary" type="submit">

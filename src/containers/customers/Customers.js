@@ -20,12 +20,16 @@ class Customers extends Component {
         this.state = {
             customerData: []
         };
-    }
+        this.state = {
+            isChecked: false,
+          };
+        }
 
     componentDidMount() {
         const url = 'http://localhost:8080/customers';
 
         console.log("Fetching " + url);
+        console.log("is checked? " + this.state.isChecked)
         fetch(url)
             .then(result => result.json())
             .then(json => {
@@ -48,6 +52,7 @@ class Customers extends Component {
     };
 
     render() {
+        console.log(this.state.isChecked)
         return (
             <Container>
             <Row>
@@ -62,7 +67,10 @@ class Customers extends Component {
             <Table striped bordered hover>
                         <TableHeader/>
                         <TableBody customerData={this.state.customerData}
-                                   removeCustomer={this.removeCustomer}/>
+                                   removeCustomer={this.removeCustomer}
+                                   checked={this.state.isChecked}
+                                   toggleChange={this.toggleChange}
+                                   />
                     </Table>
             </Row>
         </Container>

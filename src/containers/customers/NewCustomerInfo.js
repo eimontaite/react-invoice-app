@@ -7,7 +7,8 @@ class NewCustomerInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            redirectToReferrer: false
+            redirectToReferrer: false,
+            isChecked: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -16,14 +17,19 @@ class NewCustomerInfo extends React.Component {
         let nam = event.target.name;
         let val = event.target.value;
         this.setState({[nam]: val});
-        console.log(this.state)
     };
+
+    toggleChange = () => {
+        this.setState({
+          isChecked: !this.state.isChecked,
+        });
+      }
 
     handleSubmit(event) {
         console.log("handling submit")
         event.preventDefault();
         const form = new FormData(event.target);
-        console.log("form", form);
+
         fetch('http://localhost:8080/customers/new', {
             method: 'POST',
             headers: {
@@ -48,7 +54,10 @@ class NewCustomerInfo extends React.Component {
             <Container>
                 <Row>
                 <Col>
-            <CustomerInfoForm onSubmit={this.handleSubmit} onChange={this.myChangeHandler} />
+            <CustomerInfoForm onSubmit={this.handleSubmit} 
+                              onChange={this.myChangeHandler} 
+                              checked={this.state.isChecked} 
+                              onCheckboxChange={this.toggleChange}/>
                 </Col>
                 </Row>
             </Container>
