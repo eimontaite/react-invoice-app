@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import '../../styles/App.css';
 import Button from 'react-bootstrap/Button';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { withRouter } from "react-router-dom";
+
+library.add(faCheck, faTimes);
 
 const TableHeader = () => {
     return (
@@ -34,7 +39,7 @@ const TableBody = props => {
                 <td>{row.name}</td>
                 <td>{row.address}</td>
                 <td>{row.code}</td>
-                <td>{row.legalEntity}</td>
+                <td><FontAwesomeIcon icon={row.legalEntity ? 'check' : 'times'}/></td>
                 <td>
                     <InvoiceButton customerId={row.id}/>
                 </td>
