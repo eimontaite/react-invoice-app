@@ -4,6 +4,7 @@ import {Navbar, NavItem, Nav} from 'react-bootstrap';
 import Home from '../home/Home';
 import Customers from '../../containers/customers/Customers';
 import NewCustomerInfo from '../../containers/customers/NewCustomerInfo';
+import EditCustomerInfo from '../../containers/customers/EditCustomerInfo';
 import Invoices from '../../containers/invoices/Invoices';
 import UserInfo from '../../containers/user-info/UserInfo';
 import NewUserInfo from '../../containers/user-info/NewUserInfo';
@@ -39,6 +40,7 @@ class Header extends Component {
                         <Route exact path='/' component={Home}/>
                         <Route exact path="/customers" component={Customers}/>
                         <Route exact path="/customers/new" component={NewCustomerInfo} />
+                        <Route exact path="/customers/edit/:customerId" component={EditCustomerInfo} />
                         <Route exact path="/invoices" component={Invoices} />
                         <Route exact path="/invoices/new" component={NewInvoice} />
                         <Route exact path="/invoices/:customerId" component={Invoices} />

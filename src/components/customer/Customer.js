@@ -30,6 +30,14 @@ const InvoiceButton = withRouter(({ history, customerId }) => (
     </Button>
 ));
 
+const EditButton = withRouter(({ history, customerId }) => (
+    <Button
+        onClick={() => { history.push('customers/edit/' + customerId) }}
+    >
+        Edit Customer Info
+    </Button>
+));
+
 
 const TableBody = props => {
     const rows = props.customerData && props.customerData.map((row, index) => {
@@ -40,6 +48,9 @@ const TableBody = props => {
                 <td>{row.address}</td>
                 <td>{row.code}</td>
                 <td><FontAwesomeIcon icon={row.legalEntity ? 'check' : 'times'}/></td>
+                <td>
+                    <EditButton customerId={row.id}/>
+                </td>
                 <td>
                     <InvoiceButton customerId={row.id}/>
                 </td>
