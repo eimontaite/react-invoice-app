@@ -42,6 +42,6 @@
   },
   "devDependencies": {
     "react-router-dom": "^5.1.2",
-    "sequelize": "^5.21.5"
+    "sequelize": "^6.28.2"
   }
 }
